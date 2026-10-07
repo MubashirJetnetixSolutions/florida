@@ -1,0 +1,172 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap'); */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  /* --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; */
+  --font-sans: var(--font-plus-jakarta), 'Plus Jakarta Sans', sans-serif;
+  /* Custom Accent Colors from Design */
+  --color-accent-blue: #3A86C8;
+  --color-accent-purple: #8B5CF6;
+  --color-accent-green: #10B981;
+  --color-accent-cyan: #06B6D4;
+  --color-accent-orange: #F97316;
+
+  /* Dark Blue/Navy theme base */
+  --color-navy-950: #070D1F;
+  --color-navy-900: #0B132B;
+  --color-navy-800: #1C2541;
+  --color-navy-700: #3A4E7A;
+  --color-navy-600: #4E659B;
+
+  /* Glassmorphism helpers */
+  --color-glass-card: rgba(255, 255, 255, 0.85);
+  --color-glass-card-border: rgba(255, 255, 255, 0.4);
+  --color-glass-panel: rgba(255, 255, 255, 0.35);
+  --color-glass-panel-border: rgba(255, 255, 255, 0.25);
+}
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+}
+
+html{
+  overflow: hidden;
+}
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.15);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 23, 42, 0.3);
+}
+
+/* Custom CSS Glassmorphism Utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  /* border: 1px solid rgba(226, 232, 240, 0.8); */
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.02);
+}
+
+.glass-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+}
+
+.glass-sidebar {
+  background: #EDF1FA;
+  border-right: 1px solid #F0F0F0;
+}
+
+/* 3D Stacked Card Animation & Perspectives */
+.perspective-container {
+  perspective: 1200px;
+}
+
+.card-3d {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.card-stack-1 {
+  transform: rotateY(-22deg) rotateX(12deg) rotateZ(-4deg) translate3d(0, 0, 0px);
+}
+
+.card-stack-2 {
+  transform: rotateY(-22deg) rotateX(12deg) rotateZ(-4deg) translate3d(40px, -25px, -80px);
+}
+
+.card-stack-3 {
+  transform: rotateY(-22deg) rotateX(12deg) rotateZ(-4deg) translate3d(80px, -50px, -160px);
+}
+
+.card-stack-4 {
+  transform: rotateY(-22deg) rotateX(12deg) rotateZ(-4deg) translate3d(120px, -75px, -240px);
+}
+
+/* Hover effect on 3D stack */
+.perspective-container:hover .card-stack-1 {
+  transform: rotateY(-18deg) rotateX(10deg) rotateZ(-3deg) translate3d(0, 0, 20px);
+}
+
+.perspective-container:hover .card-stack-2 {
+  transform: rotateY(-18deg) rotateX(10deg) rotateZ(-3deg) translate3d(60px, -30px, -50px);
+}
+
+.perspective-container:hover .card-stack-3 {
+  transform: rotateY(-18deg) rotateX(10deg) rotateZ(-3deg) translate3d(120px, -60px, -120px);
+}
+
+.perspective-container:hover .card-stack-4 {
+  transform: rotateY(-18deg) rotateX(10deg) rotateZ(-3deg) translate3d(180px, -90px, -190px);
+}
+
+/* Animated Gradient Blobs in the Background */
+.bg-gradient-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.45;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 0;
+  animation: float-blob 20s infinite alternate ease-in-out;
+}
+
+@keyframes float-blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  50% {
+    transform: translate(60px, 40px) scale(1.1);
+  }
+
+  100% {
+    transform: translate(-30px, -20px) scale(0.9);
+  }
+}
+
+@keyframes grow-up {
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes create-order-slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.create-order-drawer {
+  animation: create-order-slide-in 280ms ease-out;
+}
